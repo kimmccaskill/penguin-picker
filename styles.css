@@ -96,4 +96,20 @@ label {
 /* Instruction styling */
 article {
   display: none;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  text-align: center;
+  margin: 30px;
+  color: #fff;
+}
+
+.greeting {
+  align-self: center;
+  color: #fff;
+  margin: 20px 50px 20px 50px;
+  width: 70%;
+  font-size: 1.2em;
 }
