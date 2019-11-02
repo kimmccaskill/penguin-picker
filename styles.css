@@ -96,7 +96,6 @@ label {
 /* Instruction styling */
 article {
   display: none;
-  display: flex;
   flex-direction: column;
 }
 
