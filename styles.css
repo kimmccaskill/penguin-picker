@@ -124,6 +124,26 @@ main {
 
 .card-container {
   grid-area: mid;
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-template-rows: 1fr 1fr 1fr; */
+
+}
+
+.memory-card{
+  width: 200px;
+  height: 300px;
+  position: relative;
+}
+
+.front-face {
+  visibility: hidden;
+  position: absolute;
+
+}
+
+.back-face {
+  position: absolute;
 }
 
 .player-info {
