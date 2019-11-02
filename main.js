@@ -9,7 +9,7 @@ var playerTwoName = document.querySelector(".plyr-two-name");
 window.addEventListener('load', playDisableToggle);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
-playBtn.addEventListener('click', loadGreeting);
+playBtn.addEventListener('click', startGame);
 
 
 function playDisableToggle() {
@@ -21,6 +21,15 @@ function playDisableToggle() {
     playBtn.disabled = true;
     playBtn.style.color = '#7a7a7a';
     playBtn.style.cursor = 'not-allowed';
+  }
+}
+
+function startGame() {
+  if(greeting.style.display === "flex") {
+    // start game
+    console.log("game start")
+  } else {
+    loadGreeting();
   }
 }
 
