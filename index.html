@@ -11,6 +11,7 @@
       <button class="hamburger-icon" type="button" name="button"></button>
       <h1>Penguin Picker</h1>
     </header>
+    <!-- Player Form -->
     <section class="form-container">
       <form class="name-form" action="index.html" method="post">
         <div id="p1">
@@ -23,8 +24,9 @@
         </div>
       </form>
     </section>
+    <!-- Player Greeting -->
     <article>
-      <h2 class="plyr-one-name">WELCOME</h2>
+      <h2 class="plyr-greeting">WELCOME</h2>
       <p class="greeting">The goal of the game is to find all 5 pairs of cards as quickly as possible. The player that finds the greatest numbers of pairs, wins.</p>
       <p class="greeting">To begin playing, the player whose name is highlighted can click any card in the card pile. It will flip over and reveal a picture of a penguin. Click another card. If they match, they will disappear and you will have completed a match! If they don’t, you’ll have three seconds to look at them before they flip back over. Then it’s time for the other player to try! </p>
       <p class="greeting">After you play, you’ll see the name of the final winner and how long it took to win the game.</p>
@@ -32,13 +34,26 @@
     <div id="btn-container">
       <button id="play-game-btn" type="button" name="button">PLAY GAME</button>
     </div>
+    <!-- Game Start -->
     <main>
-      <section class="player-info">
+      <section class="player-info column1">
+        <h2 class="plyr-one-name">PLAYER 1</h2>
+        <p class="top-player">#4 TOP PLAYER</p>
+        <div class="match-container">
+          <p>MATCHES THIS ROUND</p>
+          <p class="matches">5</p>
+        </div>
       </section>
       <section class="card-container">
 
       </section>
-      <section class="player-info">
+      <section class="player-info column2">
+        <h2 class="plyr-two-name">PLAYER 2</h2>
+        <p class="top-player">#4 TOP PLAYER</p>
+        <div class="match-container">
+          <p>MATCHES THIS ROUND</p>
+          <p class="matches">5</p>
+        </div>
       </section>
     </main>
   </body>

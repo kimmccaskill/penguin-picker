@@ -3,8 +3,8 @@ var plyrTwoInput = document.querySelector("#plyr-2-input");
 var playBtn = document.querySelector("#play-game-btn");
 var greeting = document.querySelector("article");
 var form = document.querySelector(".form-container");
-var playerOneName = document.querySelector(".plyr-one-name");
-var playerTwoName = document.querySelector(".plyr-two-name");
+var playerGreeting = document.querySelector(".plyr-greeting");
+var gameBoard = document.querySelector("main");
 
 window.addEventListener('load', playDisableToggle);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
@@ -26,6 +26,7 @@ function playDisableToggle() {
 
 function startGame() {
   if(greeting.style.display === "flex") {
+    loadGame()
     // start game
     console.log("game start")
   } else {
@@ -33,12 +34,18 @@ function startGame() {
   }
 }
 
+function loadGame() {
+  greeting.style.display = "none";
+  gameBoard.style.display = "grid"
+  playBtn.style.display = "none";
+}
+
 function loadGreeting() {
   greeting.style.display = "flex";
   form.style.display = "none";
-  insertName();
+  insertGreeting();
 }
 
-function insertName() {
-  playerOneName.innerText = `WELCOME ${plyrOneInput.value.toUpperCase()} AND ${plyrTwoInput.value.toUpperCase()}!`;
+function insertGreeting() {
+  playerGreeting.innerText = `WELCOME ${plyrOneInput.value.toUpperCase()} AND ${plyrTwoInput.value.toUpperCase()}!`;
 }
