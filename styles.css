@@ -126,14 +126,62 @@ main {
   grid-area: mid;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   /* grid-template-rows: 1fr 1fr 1fr; */
-
+  /* grid-column-gap: 20px;
+  grid-row-gap: 20px; */
 }
 
 .memory-card{
-  width: 200px;
-  height: 300px;
+  width: 150px;
+  height: 225px;
   position: relative;
+  background-color: #a2d0e5;
+  border-radius: 20px;
+  margin: 20px;
+  border: solid 4px #fff;
+  display: flex;
+  align-items: center;
+}
+
+.card1 {
+  transform: rotateZ(13deg);
+}
+
+.card2 {
+  transform: rotateZ(-5deg);
+}
+
+.card3 {
+  transform: rotateZ(13deg);
+}
+
+.card4 {
+  transform: rotateZ(15deg);
+}
+
+.card5 {
+  transform: rotateZ(-18deg);
+}
+
+.card6 {
+  transform: rotateZ(-13deg);
+}
+
+.card7 {
+  transform: rotateZ(16deg);
+}
+
+.card8 {
+  transform: rotateZ(-7deg);
+}
+
+.card9 {
+  transform: rotateZ(9deg);
+}
+
+.card10 {
+  transform: rotateZ(-13deg);
 }
 
 .front-face {
