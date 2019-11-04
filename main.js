@@ -15,8 +15,12 @@ playBtn.addEventListener('click', startGame);
 cards.forEach(card => card.addEventListener('click', flipCardUp));
 var hasFlippedCard = false;
 var firstCard, secondCard;
+var twoFlipped = false;
 
 function flipCardUp() {
+  if (twoFlipped) {
+    return;
+  }
   this.classList.add('flip');
   if(!hasFlippedCard) {
   hasFlippedCard = true;
@@ -27,7 +31,7 @@ function flipCardUp() {
   secondCard = this;
   checkForMatch();
 }
-
+// Refactor with ternary operator below
 function checkForMatch() {
   if(firstCard.dataset.breed === secondCard.dataset.breed) {
     removeMatchCards();
@@ -37,16 +41,20 @@ function checkForMatch() {
 }
 
 function unflipCards() {
+  twoFlipped = true;
   setTimeout(() => {
   firstCard.classList.remove('flip');
   secondCard.classList.remove('flip');
+  twoFlipped = false;
 }, 1500);
 }
 
 function removeMatchCards() {
+  twoFlipped = true;
   setTimeout(() => {
     firstCard.classList.add("card-match");
     secondCard.classList.add("card-match");
+    twoFlipped = false;
 }, 1200);
 }
 
@@ -61,7 +69,7 @@ function playDisableToggle() {
     playBtn.style.cursor = 'not-allowed';
   }
 }
-
+// Refactor with ternary operator below
 function startGame() {
   if(greeting.style.display === "flex") {
     loadGame()
