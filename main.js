@@ -1,16 +1,16 @@
-var plyrOneInput = document.querySelector("#plyr-1-input");
-var plyrTwoInput = document.querySelector("#plyr-2-input");
-var plyrOneName = document.querySelector(".plyr-one-name");
-var plyrTwoName = document.querySelector(".plyr-two-name");
-var playBtn = document.querySelector("#play-game-btn");
-var greeting = document.querySelector("article");
-var form = document.querySelector(".form-container");
-var playerGreeting = document.querySelector(".plyr-greeting");
-var gameBoard = document.querySelector("main");
 var cards = document.querySelectorAll('.memory-card');
-var matchCount = document.querySelector('.matches')
-var congratsPg = document.querySelector('#congrats-page')
 var congratsMsg = document.querySelector("#congrats-msg")
+var congratsPg = document.querySelector('#congrats-page')
+var form = document.querySelector(".form-container");
+var gameBoard = document.querySelector("main");
+var greeting = document.querySelector("article");
+var matchCount = document.querySelector('.matches')
+var playBtn = document.querySelector("#play-game-btn");
+var playerGreeting = document.querySelector(".plyr-greeting");
+var plyrOneInput = document.querySelector("#plyr-1-input");
+var plyrOneName = document.querySelector(".plyr-one-name");
+var plyrTwoInput = document.querySelector("#plyr-2-input");
+var plyrTwoName = document.querySelector(".plyr-two-name");
 
 window.addEventListener('load', playDisableToggle);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
@@ -22,12 +22,41 @@ var firstCard, secondCard;
 var twoFlipped = false;
 var matchCounter = 0;
 
-function endGameCheck() {
-  if (matchCounter === 5) {
-    console.log("end game")
-    gameBoard.style.display = "none";
-    congratsPg.style.display = "initial";
-    congratsMsg.innerText = `CONGRATULATIONS! ${plyrOneInput.value} WINS!!!`;
+function insertGreeting() {
+  playerGreeting.innerText = `WELCOME ${plyrOneInput.value.toUpperCase()} AND ${plyrTwoInput.value.toUpperCase()}!`;
+}
+
+function loadGreeting() {
+  greeting.style.display = "flex";
+  form.style.display = "none";
+  insertGreeting();
+}
+
+function loadGame() {
+  greeting.style.display = "none";
+  gameBoard.style.display = "grid"
+  playBtn.style.display = "none";
+}
+
+function startGame() {
+  if(greeting.style.display === "flex") {
+    loadGame()
+    plyrOneName.innerText = plyrOneInput.value;
+    plyrTwoName.innerText = plyrTwoInput.value;
+  } else {
+    loadGreeting();
+  }
+}
+
+function playDisableToggle() {
+  if (plyrOneInput.value && plyrTwoInput.value) {
+    playBtn.disabled = false;
+    playBtn.style.color = '#000000';
+    playBtn.style.cursor = 'pointer';
+  } else {
+    playBtn.disabled = true;
+    playBtn.style.color = '#7a7a7a';
+    playBtn.style.cursor = 'not-allowed';
   }
 }
 
@@ -44,16 +73,6 @@ function flipCardUp() {
   secondCard = this;
   checkForMatch();
 }
-// Refactor with ternary operator below
-function checkForMatch() {
-  if(firstCard.dataset.breed === secondCard.dataset.breed) {
-    removeMatchCards();
-    matchCounter++;
-    matchCount.innerText = matchCounter;
-    return;
-  }
-  unflipCards();
-}
 
 function unflipCards() {
   twoFlipped = true;
@@ -62,6 +81,16 @@ function unflipCards() {
   secondCard.classList.remove('flip');
   twoFlipped = false;
 }, 1500);
+}
+
+function checkForMatch() {
+  if(firstCard.dataset.breed === secondCard.dataset.breed) {
+    removeMatchCards();
+    matchCounter++;
+    matchCount.innerText = matchCounter;
+    return;
+  }
+  unflipCards();
 }
 
 function removeMatchCards() {
@@ -74,40 +103,11 @@ function removeMatchCards() {
 }, 1200);
 }
 
-function playDisableToggle() {
-  if (plyrOneInput.value && plyrTwoInput.value) {
-    playBtn.disabled = false;
-    playBtn.style.color = '#000000';
-    playBtn.style.cursor = 'pointer';
-  } else {
-    playBtn.disabled = true;
-    playBtn.style.color = '#7a7a7a';
-    playBtn.style.cursor = 'not-allowed';
+function endGameCheck() {
+  if (matchCounter === 5) {
+    console.log("end game")
+    gameBoard.style.display = "none";
+    congratsPg.style.display = "initial";
+    congratsMsg.innerText = `CONGRATULATIONS! ${plyrOneInput.value} WINS!!!`;
   }
-}
-// Refactor with ternary operator below
-function startGame() {
-  if(greeting.style.display === "flex") {
-    loadGame()
-    plyrOneName.innerText = plyrOneInput.value;
-    plyrTwoName.innerText = plyrTwoInput.value;
-  } else {
-    loadGreeting();
-  }
-}
-
-function loadGame() {
-  greeting.style.display = "none";
-  gameBoard.style.display = "grid"
-  playBtn.style.display = "none";
-}
-
-function loadGreeting() {
-  greeting.style.display = "flex";
-  form.style.display = "none";
-  insertGreeting();
-}
-
-function insertGreeting() {
-  playerGreeting.innerText = `WELCOME ${plyrOneInput.value.toUpperCase()} AND ${plyrTwoInput.value.toUpperCase()}!`;
 }
