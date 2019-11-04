@@ -1,5 +1,7 @@
 var plyrOneInput = document.querySelector("#plyr-1-input");
 var plyrTwoInput = document.querySelector("#plyr-2-input");
+var plyrOneName = document.querySelector(".plyr-one-name");
+var plyrTwoName = document.querySelector(".plyr-two-name");
 var playBtn = document.querySelector("#play-game-btn");
 var greeting = document.querySelector("article");
 var form = document.querySelector(".form-container");
@@ -75,8 +77,8 @@ function playDisableToggle() {
 function startGame() {
   if(greeting.style.display === "flex") {
     loadGame()
-    // start game
-    console.log("game start")
+    plyrOneName.innerText = plyrOneInput.value;
+    plyrTwoName.innerText = plyrTwoInput.value;
   } else {
     loadGreeting();
   }
