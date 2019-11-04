@@ -6,15 +6,33 @@ var form = document.querySelector(".form-container");
 var playerGreeting = document.querySelector(".plyr-greeting");
 var gameBoard = document.querySelector("main");
 var cards = document.querySelectorAll('.memory-card');
+// var hasFlippedCard = false;
 
 window.addEventListener('load', playDisableToggle);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
-cards.forEach(card => card.addEventListener('click', flipCard));
+cards.forEach(card => card.addEventListener('click', flipCardUp));
+var hasFlippedCard = false;
+var firstCard, secondCard;
 
-function flipCard() {
-  this.classList.toggle('flip');
+function flipCardUp() {
+  this.classList.add('flip');
+  if(!hasFlippedCard) {
+  hasFlippedCard = true;
+  firstCard = this;
+  console.log("you flipped a card");
+} else if(hasFlippedCard) {
+  secondCard = this;
+  checkForMatch();
+  console.log("second card flip");
+}
+}
+
+function checkForMatch() {
+  if(firstCard.dataset.breed === secondCard.dataset.breed) {
+    console.log("its a match");
+  }
 }
 
 function playDisableToggle() {
