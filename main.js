@@ -20,7 +20,6 @@ plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
 var firstCard, secondCard;
-var twoFlipped = false;
 
 function createCard() {
   var card = new Card();
