@@ -11,13 +11,15 @@ class Deck {
   }
 
   checkSelectedCards() {
-    if(this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo)
-    // splice items from selectedCards to matched
+    if(this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo) {
     for(var i = 0;i < this.selectedCards.length; i++) {
     this.matchedCards.push(this.selectedCards[i]);
     };
     this.selectedCards = [];
     this.matches++;
+  }
+    this.selectedCards = [];
+
   }
 
   selectCard(clickedId) {

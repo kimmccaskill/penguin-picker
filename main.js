@@ -21,7 +21,6 @@ plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
 var firstCard, secondCard;
 var twoFlipped = false;
-var matchCounter = 0;
 
 function createCard() {
   var card = new Card();
@@ -110,24 +109,24 @@ function unflipCards() {
 function checkForMatch() {
   if(firstCard.dataset.breed === secondCard.dataset.breed) {
     removeMatchCards();
-    matchCounter++;
     return;
   }
   unflipCards();
+  deck.checkSelectedCards()
 }
 
 function removeMatchCards() {
   setTimeout(() => {
     firstCard.classList.add("card-match");
     secondCard.classList.add("card-match");
-    deck.checkSelectedCards()
     matchCount.innerHTML = deck.matches;
     endGameCheck()
+    deck.checkSelectedCards()
 }, 1200);
 }
 
 function endGameCheck() {
-  if (matchCounter === 5) {
+  if (deck.matches === 5) {
     console.log("end game")
     gameBoard.style.display = "none";
     congratsPg.style.display = "initial";
