@@ -112,3 +112,145 @@ h2 {
   width: 70%;
   font-size: 1.2em;
 }
+/* Game Styling */
+main {
+  display: none;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "left mid right";
+  color: #fff;
+}
+
+.card-container {
+  grid-area: mid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  perspective: 1000px;
+  /* grid-template-rows: 1fr 1fr 1fr; */
+  /* grid-column-gap: 20px;
+  grid-row-gap: 20px; */
+}
+
+.memory-card{
+  width: 125px;
+  height: 187.5px;
+  position: relative;
+  border-radius: 20px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+}
+
+img {
+  border-radius: 20px;
+  width: 121px;
+  height: inherit;
+}
+
+.memory-card:active {
+   transform: scale(0.97);
+   transition: transform .2s;
+ }
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  position: absolute;
+  backface-visibility: hidden;
+  border: solid 4px #fff;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+.back-face {
+  background-color: blue;
+}
+
+.card-match {
+  visibility: hidden;
+}
+
+.card1 {
+  transform: rotateZ(13deg);
+}
+
+.card2 {
+  transform: rotateZ(-5deg);
+}
+
+.card3 {
+  transform: rotateZ(13deg);
+}
+
+.card4 {
+  transform: rotateZ(15deg);
+}
+
+.card5 {
+  transform: rotateZ(-18deg);
+}
+
+.card6 {
+  transform: rotateZ(-13deg);
+}
+
+.card7 {
+  transform: rotateZ(16deg);
+}
+
+.card8 {
+  transform: rotateZ(-7deg);
+}
+
+.card9 {
+  transform: rotateZ(9deg);
+}
+
+.card10 {
+  transform: rotateZ(-13deg);
+}
+
+.player-info {
+  background-color: #000;
+  text-align: center;
+}
+
+.top-player {
+  border-bottom: solid 1px #fff;
+  padding: 20px;
+  margin: 5px;
+}
+
+.match-container {
+  border-bottom: solid 1px #fff;
+  padding: 20px;
+  margin: 5px;
+}
+
+.matches {
+  font-size: 72px;
+  font-weight: bold;
+}
+
+.column1 {
+  grid-area: left;
+}
+
+.column2 {
+  grid-area: right;
+}
+
+#congrats-pg {
+  display: none;
+}

@@ -11,6 +11,7 @@
       <button class="hamburger-icon" type="button" name="button"></button>
       <h1>Penguin Picker</h1>
     </header>
+    <!-- Player Form -->
     <section class="form-container">
       <form class="name-form" action="index.html" method="post">
         <div id="p1">
@@ -23,8 +24,9 @@
         </div>
       </form>
     </section>
+    <!-- Player Greeting -->
     <article>
-      <h2 class="plyr-one-name">WELCOME</h2>
+      <h2 class="plyr-greeting">WELCOME</h2>
       <p class="greeting">The goal of the game is to find all 5 pairs of cards as quickly as possible. The player that finds the greatest numbers of pairs, wins.</p>
       <p class="greeting">To begin playing, the player whose name is highlighted can click any card in the card pile. It will flip over and reveal a picture of a penguin. Click another card. If they match, they will disappear and you will have completed a match! If they don’t, you’ll have three seconds to look at them before they flip back over. Then it’s time for the other player to try! </p>
       <p class="greeting">After you play, you’ll see the name of the final winner and how long it took to win the game.</p>
@@ -32,15 +34,70 @@
     <div id="btn-container">
       <button id="play-game-btn" type="button" name="button">PLAY GAME</button>
     </div>
+    <!-- Game Start -->
     <main>
-      <section class="player-info">
+      <section class="player-info column1">
+        <h2 class="plyr-one-name">PLAYER 1</h2>
+        <p class="top-player">#4 TOP PLAYER</p>
+        <div class="match-container">
+          <p >MATCHES THIS ROUND</p>
+          <p class="matches">0</p>
+        </div>
       </section>
       <section class="card-container">
-
+        <div class="memory-card card1" data-breed="african">
+          <img class="front-face" src="./assets/afric-peng.jpeg" alt="African Penguin">
+          <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+        </div>
+        <div class="memory-card card2" data-breed="african">
+          <img class="front-face" src="./assets/afric-peng.jpeg" alt="African Penguin">
+          <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+        </div>
+        <div class="memory-card card3" data-breed="chinstrap">
+          <img class="front-face" src="./assets/chin-peng.jpg" alt="Chinstrap Penguin">
+          <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+        </div>
+        <div class="memory-card card4" data-breed="chinstrap">
+          <img class="front-face" src="./assets/chin-peng.jpg" alt="Chinstrap Penguin">
+          <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+        </div>
+        <div class="memory-card card5" data-breed="emperor">
+          <img class="front-face" src="./assets/emp-peng.jpg" alt="Emperor Penguin">
+          <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+        </div>
+        <div class="memory-card card6" data-breed="emperor">
+          <img class="front-face" src="./assets/emp-peng.jpg" alt="Emperor Penguin">
+          <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+        </div>
+        <div class="memory-card card7" data-breed="macaroni">
+          <img class="front-face" src="./assets/mac-peng.jpg" alt="Macaroni Penguin">
+          <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+        </div>
+        <div class="memory-card card8" data-breed="macaroni">
+          <img class="front-face" src="./assets/mac-peng.jpg" alt="Macaroni Penguin">
+          <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+        </div>
+        <div class="memory-card card9" data-breed="little">
+          <img class="front-face" src="./assets/little-peng.jpg" alt="Little Penguin">
+          <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+        </div>
+        <div class="memory-card card10" data-breed="little">
+          <img class="front-face" src="./assets/little-peng.jpg" alt="Little Penguin">
+          <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+        </div>
       </section>
-      <section class="player-info">
+      <section class="player-info column2">
+        <h2 class="plyr-two-name">PLAYER 2</h2>
+        <p class="top-player">#4 TOP PLAYER</p>
+        <div class="match-container">
+          <p>MATCHES THIS ROUND</p>
+          <p class="matches">5</p>
+        </div>
       </section>
     </main>
+    <section id="congrats-page">
+      <h2 id="congrats-msg"></h2>
+    </section>
   </body>
 </html>
 <script type="text/javascript" src='main.js'></script>
