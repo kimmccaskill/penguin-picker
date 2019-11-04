@@ -1,8 +1,9 @@
-var cards = document.querySelectorAll('.memory-card');
+// var cards = document.querySelectorAll('.memory-card');
 var congratsMsg = document.querySelector("#congrats-msg")
 var congratsPg = document.querySelector('#congrats-page')
 var form = document.querySelector(".form-container");
 var gameBoard = document.querySelector("main");
+var cardContainer = document.querySelector(".card-container")
 var greeting = document.querySelector("article");
 var matchCount = document.querySelector('.matches')
 var playBtn = document.querySelector("#play-game-btn");
@@ -11,16 +12,33 @@ var plyrOneInput = document.querySelector("#plyr-1-input");
 var plyrOneName = document.querySelector(".plyr-one-name");
 var plyrTwoInput = document.querySelector("#plyr-2-input");
 var plyrTwoName = document.querySelector(".plyr-two-name");
+// var deck = new Deck();
 
 window.addEventListener('load', playDisableToggle);
+window.addEventListener('load', createCard);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
-cards.forEach(card => card.addEventListener('click', flipCardUp));
+// cards.forEach(card => card.addEventListener('click', flipCardUp));
 var hasFlippedCard = false;
 var firstCard, secondCard;
 var twoFlipped = false;
 var matchCounter = 0;
+
+// createCard();
+
+function createCard() {
+  var card = new Card();
+  var num = 1;
+  for(var i = 0; i < card.matchInfo.length; i++) {
+  cardContainer.innerHTML += `
+  <div class="memory-card card${num++}" data-breed="${card.matchInfo[i]}">
+    <img class="front-face" src="./assets/${card.matchInfo[i]}-peng.jpg" alt="${card.matchInfo[i]} Penguin">
+    <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+  </div>`;
+  document.querySelectorAll('.memory-card').forEach(card => card.addEventListener('click', flipCardUp));
+  };
+}
 
 function insertGreeting() {
   playerGreeting.innerText = `WELCOME ${plyrOneInput.value.toUpperCase()} AND ${plyrTwoInput.value.toUpperCase()}!`;
@@ -110,4 +128,4 @@ function endGameCheck() {
     congratsPg.style.display = "initial";
     congratsMsg.innerText = `CONGRATULATIONS! ${plyrOneInput.value} WINS!!!`;
   }
-}
+};
