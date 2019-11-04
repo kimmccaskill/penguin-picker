@@ -12,32 +12,38 @@ var plyrOneInput = document.querySelector("#plyr-1-input");
 var plyrOneName = document.querySelector(".plyr-one-name");
 var plyrTwoInput = document.querySelector("#plyr-2-input");
 var plyrTwoName = document.querySelector(".plyr-two-name");
-// var deck = new Deck();
+var deck = new Deck();
 
 window.addEventListener('load', playDisableToggle);
 window.addEventListener('load', createCard);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
-// cards.forEach(card => card.addEventListener('click', flipCardUp));
 var hasFlippedCard = false;
 var firstCard, secondCard;
 var twoFlipped = false;
 var matchCounter = 0;
 
-// createCard();
-
 function createCard() {
   var card = new Card();
   var num = 1;
-  for(var i = 0; i < card.matchInfo.length; i++) {
+  instantiateCard();
+  for(var i = 0; i < deck.cards.length; i++) {
   cardContainer.innerHTML += `
-  <div class="memory-card card${num++}" data-breed="${card.matchInfo[i]}">
-    <img class="front-face" src="./assets/${card.matchInfo[i]}-peng.jpg" alt="${card.matchInfo[i]} Penguin">
+  <div class="memory-card card${num++}" data-breed="${deck.cards[i].matchInfo}" data-id=${i}>
+    <img class="front-face" src="./assets/${deck.cards[i].matchInfo}-peng.jpg" alt="${deck.cards[i].matchInfo} Penguin">
     <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
   </div>`;
   document.querySelectorAll('.memory-card').forEach(card => card.addEventListener('click', flipCardUp));
   };
+}
+
+function instantiateCard() {
+    var data = ['afric', 'afric', 'chin', 'chin', 'emp', 'emp', 'little', 'little', 'mac', 'mac'];
+    for (var i =0; i < data.length; i++) {
+      var card = new Card(data[i], i);
+      deck.cards.push(card);
+    }
 }
 
 function insertGreeting() {
@@ -78,17 +84,20 @@ function playDisableToggle() {
   }
 }
 
-function flipCardUp() {
-  if (twoFlipped) return;
+function flipCardUp(event) {
+  var clickedId = parseInt(event.target.parentNode.dataset.id);
+  // if (deck.selectedCards.length === 2) return;
   if (this === firstCard) return;
   this.classList.add('flip');
   if(!hasFlippedCard) {
   hasFlippedCard = true;
   firstCard = this;
+  deck.selectCard(clickedId);
   return;
 }
   hasFlippedCard = false;
   secondCard = this;
+  deck.selectCard(clickedId);
   checkForMatch();
 }
 
