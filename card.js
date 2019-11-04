@@ -6,6 +6,6 @@ class Card {
   }
 
   match() {
-
+    
   };
 };

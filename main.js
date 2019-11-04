@@ -19,7 +19,6 @@ window.addEventListener('load', createCard);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
-var hasFlippedCard = false;
 var firstCard, secondCard;
 var twoFlipped = false;
 var matchCounter = 0;
@@ -83,30 +82,28 @@ function playDisableToggle() {
     playBtn.style.cursor = 'not-allowed';
   }
 }
-
 function flipCardUp(event) {
+  // debugger;
+
   var clickedId = parseInt(event.target.parentNode.dataset.id);
   if (deck.selectedCards.length === 2) return;
   if (this === firstCard) return;
+  // if (deck.selectedCards[1] !== undefined && deck.selectedCards[0] === deck.selectedCards[1]) return;
   this.classList.add('flip');
-  if(!hasFlippedCard) {
-  hasFlippedCard = true;
+  if(!deck.selectedCards[0]) {
   firstCard = this;
   deck.selectCard(clickedId);
   return;
 }
-  hasFlippedCard = false;
   secondCard = this;
   deck.selectCard(clickedId);
   checkForMatch();
 }
 
 function unflipCards() {
-  // twoFlipped = true;
   setTimeout(() => {
   firstCard.classList.remove('flip');
   secondCard.classList.remove('flip');
-  // twoFlipped = false;
 }, 1500);
 }
 
@@ -114,18 +111,15 @@ function checkForMatch() {
   if(firstCard.dataset.breed === secondCard.dataset.breed) {
     removeMatchCards();
     matchCounter++;
-    // matchCount.innerHTML = deck.matches;
     return;
   }
   unflipCards();
 }
 
 function removeMatchCards() {
-  // twoFlipped = true;
   setTimeout(() => {
     firstCard.classList.add("card-match");
     secondCard.classList.add("card-match");
-    // twoFlipped = false;
     deck.checkSelectedCards()
     matchCount.innerHTML = deck.matches;
     endGameCheck()
