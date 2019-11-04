@@ -3,7 +3,7 @@ class Deck {
     this.cards = [];
     this.selectedCards = [];
     this.matchedCards = [];
-    this.matches = [];
+    this.matches = 0;
   }
 
   shuffle() {
@@ -11,7 +11,12 @@ class Deck {
   }
 
   checkSelectedCards() {
-
+    if(this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo)
+    // splice items from selectedCards to matched
+    for(var i = 0;i < this.selectedCards.length; i++) {
+    this.matchedCards.push(this.selectedCards[i]);
+    };
+    this.selectedCards = [];
   }
 
   selectCard(clickedId) {

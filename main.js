@@ -86,7 +86,7 @@ function playDisableToggle() {
 
 function flipCardUp(event) {
   var clickedId = parseInt(event.target.parentNode.dataset.id);
-  // if (deck.selectedCards.length === 2) return;
+  if (deck.selectedCards.length === 2) return;
   if (this === firstCard) return;
   this.classList.add('flip');
   if(!hasFlippedCard) {
@@ -102,11 +102,11 @@ function flipCardUp(event) {
 }
 
 function unflipCards() {
-  twoFlipped = true;
+  // twoFlipped = true;
   setTimeout(() => {
   firstCard.classList.remove('flip');
   secondCard.classList.remove('flip');
-  twoFlipped = false;
+  // twoFlipped = false;
 }, 1500);
 }
 
@@ -115,17 +115,19 @@ function checkForMatch() {
     removeMatchCards();
     matchCounter++;
     matchCount.innerText = matchCounter;
+    // deck.checkSelectedCards()
     return;
   }
   unflipCards();
 }
 
 function removeMatchCards() {
-  twoFlipped = true;
+  // twoFlipped = true;
   setTimeout(() => {
     firstCard.classList.add("card-match");
     secondCard.classList.add("card-match");
-    twoFlipped = false;
+    // twoFlipped = false;
+    deck.checkSelectedCards()
     endGameCheck()
 }, 1200);
 }
