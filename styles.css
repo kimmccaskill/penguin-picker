@@ -129,7 +129,7 @@ main {
   /* flex-wrap: wrap; */
   /* justify-content: space-evenly; */
   perspective: 1000px;
-  grid-template-columns: 1fr .5fr 1fr .5fr 1fr .5fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
     ". one . two . three ."
@@ -137,6 +137,7 @@ main {
     ". eight . nine . ten .";
   grid-column-gap: -20px;
   grid-row-gap: -20px;
+  padding: 20px;
 }
 
 .memory-card{
@@ -144,7 +145,6 @@ main {
   height: 187.5px;
   position: relative;
   border-radius: 20px;
-  margin: 20px;
   display: flex;
   align-items: center;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
