@@ -17,6 +17,7 @@ class Deck {
     this.matchedCards.push(this.selectedCards[i]);
     };
     this.selectedCards = [];
+    this.matches++;
   }
 
   selectCard(clickedId) {

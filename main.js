@@ -114,8 +114,7 @@ function checkForMatch() {
   if(firstCard.dataset.breed === secondCard.dataset.breed) {
     removeMatchCards();
     matchCounter++;
-    matchCount.innerText = matchCounter;
-    // deck.checkSelectedCards()
+    // matchCount.innerHTML = deck.matches;
     return;
   }
   unflipCards();
@@ -128,6 +127,7 @@ function removeMatchCards() {
     secondCard.classList.add("card-match");
     // twoFlipped = false;
     deck.checkSelectedCards()
+    matchCount.innerHTML = deck.matches;
     endGameCheck()
 }, 1200);
 }
