@@ -6,7 +6,7 @@ var form = document.querySelector(".form-container");
 var playerGreeting = document.querySelector(".plyr-greeting");
 var gameBoard = document.querySelector("main");
 var cards = document.querySelectorAll('.memory-card');
-// var hasFlippedCard = false;
+var matchCount = document.querySelector('.matches')
 
 window.addEventListener('load', playDisableToggle);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
@@ -16,11 +16,11 @@ cards.forEach(card => card.addEventListener('click', flipCardUp));
 var hasFlippedCard = false;
 var firstCard, secondCard;
 var twoFlipped = false;
+var matchCounter = 0;
 
 function flipCardUp() {
-  if (twoFlipped) {
-    return;
-  }
+  if (twoFlipped) return;
+  if (this === firstCard) return;
   this.classList.add('flip');
   if(!hasFlippedCard) {
   hasFlippedCard = true;
@@ -35,6 +35,8 @@ function flipCardUp() {
 function checkForMatch() {
   if(firstCard.dataset.breed === secondCard.dataset.breed) {
     removeMatchCards();
+    matchCounter++;
+    matchCount.innerText = matchCounter;
     return;
   }
   unflipCards();
