@@ -127,6 +127,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  perspective: 1000px;
   /* grid-template-rows: 1fr 1fr 1fr; */
   /* grid-column-gap: 20px;
   grid-row-gap: 20px; */
@@ -136,12 +137,40 @@ main {
   width: 150px;
   height: 225px;
   position: relative;
-  background-color: #a2d0e5;
   border-radius: 20px;
   margin: 20px;
   border: solid 4px #fff;
   display: flex;
   align-items: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+}
+
+img {
+  border-radius: 20px;
+  width: 146px;
+  height: inherit;
+}
+
+.memory-card:active {
+   transform: scale(0.97);
+   transition: transform .2s;
+ }
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
 }
 
 .card1 {
@@ -182,16 +211,6 @@ main {
 
 .card10 {
   transform: rotateZ(-13deg);
-}
-
-.front-face {
-  visibility: hidden;
-  position: absolute;
-
-}
-
-.back-face {
-  position: absolute;
 }
 
 .player-info {

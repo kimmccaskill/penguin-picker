@@ -5,12 +5,17 @@ var greeting = document.querySelector("article");
 var form = document.querySelector(".form-container");
 var playerGreeting = document.querySelector(".plyr-greeting");
 var gameBoard = document.querySelector("main");
+var cards = document.querySelectorAll('.memory-card');
 
 window.addEventListener('load', playDisableToggle);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
+cards.forEach(card => card.addEventListener('click', flipCard));
 
+function flipCard() {
+  this.classList.toggle('flip');
+}
 
 function playDisableToggle() {
   if (plyrOneInput.value && plyrTwoInput.value) {
