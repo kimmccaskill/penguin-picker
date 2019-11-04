@@ -112,6 +112,7 @@ h2 {
   width: 70%;
   font-size: 1.2em;
 }
+
 /* Game Styling */
 main {
   display: none;
@@ -124,13 +125,18 @@ main {
 
 .card-container {
   grid-area: mid;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-evenly; */
   perspective: 1000px;
-  /* grid-template-rows: 1fr 1fr 1fr; */
-  /* grid-column-gap: 20px;
-  grid-row-gap: 20px; */
+  grid-template-columns: 1fr .5fr 1fr .5fr 1fr .5fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    ". one . two . three ."
+    "four . five . six . seven"
+    ". eight . nine . ten .";
+  grid-column-gap: -20px;
+  grid-row-gap: -20px;
 }
 
 .memory-card{
@@ -183,42 +189,52 @@ img {
 
 .card1 {
   transform: rotateZ(13deg);
+  grid-area: one;
 }
 
 .card2 {
   transform: rotateZ(-5deg);
+  grid-area: two;
 }
 
 .card3 {
   transform: rotateZ(13deg);
+  grid-area: three;
 }
 
 .card4 {
   transform: rotateZ(15deg);
+  grid-area: four;
 }
 
 .card5 {
   transform: rotateZ(-18deg);
+  grid-area: five;
 }
 
 .card6 {
   transform: rotateZ(-13deg);
+  grid-area: six;
 }
 
 .card7 {
   transform: rotateZ(16deg);
+  grid-area: seven;
 }
 
 .card8 {
   transform: rotateZ(-7deg);
+  grid-area: eight;
 }
 
 .card9 {
   transform: rotateZ(9deg);
+  grid-area: nine;
 }
 
 .card10 {
   transform: rotateZ(-13deg);
+  grid-area: ten;
 }
 
 .player-info {
