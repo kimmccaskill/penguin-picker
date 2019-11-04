@@ -250,3 +250,7 @@ img {
 .column2 {
   grid-area: right;
 }
+
+#congrats-pg {
+  display: none;
+}

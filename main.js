@@ -9,6 +9,8 @@ var playerGreeting = document.querySelector(".plyr-greeting");
 var gameBoard = document.querySelector("main");
 var cards = document.querySelectorAll('.memory-card');
 var matchCount = document.querySelector('.matches')
+var congratsPg = document.querySelector('#congrats-page')
+var congratsMsg = document.querySelector("#congrats-msg")
 
 window.addEventListener('load', playDisableToggle);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
@@ -23,6 +25,9 @@ var matchCounter = 0;
 function endGameCheck() {
   if (matchCounter === 5) {
     console.log("end game")
+    gameBoard.style.display = "none";
+    congratsPg.style.display = "initial";
+    congratsMsg.innerText = `CONGRATULATIONS! ${plyrOneInput.value} WINS!!!`;
   }
 }
 
