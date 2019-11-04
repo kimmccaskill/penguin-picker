@@ -20,6 +20,12 @@ var firstCard, secondCard;
 var twoFlipped = false;
 var matchCounter = 0;
 
+function endGameCheck() {
+  if (matchCounter === 5) {
+    console.log("end game")
+  }
+}
+
 function flipCardUp() {
   if (twoFlipped) return;
   if (this === firstCard) return;
@@ -59,6 +65,7 @@ function removeMatchCards() {
     firstCard.classList.add("card-match");
     secondCard.classList.add("card-match");
     twoFlipped = false;
+    endGameCheck()
 }, 1200);
 }
 

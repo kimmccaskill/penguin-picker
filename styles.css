@@ -134,12 +134,11 @@ main {
 }
 
 .memory-card{
-  width: 150px;
-  height: 225px;
+  width: 125px;
+  height: 187.5px;
   position: relative;
   border-radius: 20px;
   margin: 20px;
-  border: solid 4px #fff;
   display: flex;
   align-items: center;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
@@ -150,7 +149,7 @@ main {
 
 img {
   border-radius: 20px;
-  width: 146px;
+  width: 121px;
   height: inherit;
 }
 
@@ -167,10 +166,15 @@ img {
 .back-face {
   position: absolute;
   backface-visibility: hidden;
+  border: solid 4px #fff;
 }
 
 .front-face {
   transform: rotateY(180deg);
+}
+
+.back-face {
+  background-color: blue;
 }
 
 .card-match {
