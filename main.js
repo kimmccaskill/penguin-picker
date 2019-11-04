@@ -21,18 +21,33 @@ function flipCardUp() {
   if(!hasFlippedCard) {
   hasFlippedCard = true;
   firstCard = this;
-  console.log("you flipped a card");
-} else if(hasFlippedCard) {
+  return;
+}
+  hasFlippedCard = false;
   secondCard = this;
   checkForMatch();
-  console.log("second card flip");
-}
 }
 
 function checkForMatch() {
   if(firstCard.dataset.breed === secondCard.dataset.breed) {
-    console.log("its a match");
+    removeMatchCards();
+    return;
   }
+  unflipCards();
+}
+
+function unflipCards() {
+  setTimeout(() => {
+  firstCard.classList.remove('flip');
+  secondCard.classList.remove('flip');
+}, 1500);
+}
+
+function removeMatchCards() {
+  setTimeout(() => {
+    firstCard.classList.add("card-match");
+    secondCard.classList.add("card-match");
+}, 1200);
 }
 
 function playDisableToggle() {

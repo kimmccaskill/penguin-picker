@@ -173,6 +173,10 @@ img {
   transform: rotateY(180deg);
 }
 
+.card-match {
+  visibility: hidden;
+}
+
 .card1 {
   transform: rotateZ(13deg);
 }
