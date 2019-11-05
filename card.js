@@ -6,6 +6,6 @@ class Card {
   }
 
   match() {
-    
+    this.matched = true;
   };
 };

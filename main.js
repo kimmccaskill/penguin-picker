@@ -91,10 +91,10 @@ function flipCardUp(event) {
   if (this.classList.contains('flip')) return;
   this.classList.add('flip');
   if(!deck.selectedCards[0]) {
-  firstCard = this;
-  deck.selectCard(clickedId);
-  return;
-}
+    firstCard = this;
+    deck.selectCard(clickedId);
+    return;
+  }
   secondCard = this;
   deck.selectCard(clickedId);
   checkForMatch();
@@ -112,7 +112,19 @@ function timer() {
 
 function startTimer() {
   seconds++;
+  if(seconds > 59) {
+    seconds = 0;
+    minutes++;
+  }
+  timeResult();
+}
+
+function timeResult() {
+  if(minutes === 0) {
   timeResults.innerHTML = `It took you ${seconds} seconds!`;
+  } else{
+  timeResults.innerHTML = `It took you ${minutes} minute and ${seconds} seconds!`;
+  }
 }
 
 function unflipCards() {
@@ -131,12 +143,19 @@ function checkForMatch() {
   unflipCards();
 }
 
+function updateMatches() {
+  if(deck.matches > 0) {
+    matchCount.innerHTML = deck.matches;
+  }
+}
+
 function removeMatchCards() {
   setTimeout(() => {
     firstCard.classList.add("card-match");
     secondCard.classList.add("card-match");
-    deck.checkSelectedCards()
-    endGameCheck()
+    deck.checkSelectedCards();
+    updateMatches();
+    endGameCheck();
 }, 1200);
 }
 

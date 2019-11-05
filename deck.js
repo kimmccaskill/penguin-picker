@@ -36,9 +36,9 @@ class Deck {
 
   moveToMatched() {
     for(var i = 0;i < this.selectedCards.length; i++) {
+    // this.selectedCards[i].card.match();
     this.matchedCards.push(this.selectedCards[i]);
     };
     this.matches++;
-    matchCount.innerHTML = this.matches;
   }
 }
