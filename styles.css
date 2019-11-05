@@ -269,6 +269,12 @@ img {
   grid-area: right;
 }
 
-#congrats-pg {
+#congrats-page {
   display: none;
+}
+
+#time-results {
+  color: #fff;
+  text-align: center;
+  font-size: 1.2em;
 }
