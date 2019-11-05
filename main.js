@@ -36,11 +36,12 @@ function createCard() {
 }
 
 function instantiateCard() {
-    var data = ['afric', 'afric', 'chin', 'chin', 'emp', 'emp', 'little', 'little', 'mac', 'mac'];
-    for (var i =0; i < data.length; i++) {
-      var card = new Card(data[i], i);
-      deck.cards.push(card);
+  var data = ['afric', 'afric', 'chin', 'chin', 'emp', 'emp', 'little', 'little', 'mac', 'mac'];
+  for (var i =0; i < data.length; i++) {
+    var card = new Card(data[i], i);
+    deck.cards.push(card);
     }
+  deck.shuffle(deck.cards);
 }
 
 function insertGreeting() {
@@ -55,7 +56,7 @@ function loadGreeting() {
 
 function loadGame() {
   greeting.style.display = "none";
-  gameBoard.style.display = "grid"
+  gameBoard.style.display = "grid";
   playBtn.style.display = "none";
 }
 
@@ -81,12 +82,9 @@ function playDisableToggle() {
   }
 }
 function flipCardUp(event) {
-  // debugger;
-
   var clickedId = parseInt(event.target.parentNode.dataset.id);
   if (deck.selectedCards.length === 2) return;
   if (this === firstCard) return;
-  // if (deck.selectedCards[1] !== undefined && deck.selectedCards[0] === deck.selectedCards[1]) return;
   this.classList.add('flip');
   if(!deck.selectedCards[0]) {
   firstCard = this;

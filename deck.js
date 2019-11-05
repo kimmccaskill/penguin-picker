@@ -6,15 +6,20 @@ class Deck {
     this.matches = 0;
   }
 
-  shuffle() {
-
+  shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
   }
 
   checkSelectedCards() {
     if(this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo) {
-    for(var i = 0;i < this.selectedCards.length; i++) {
-    this.matchedCards.push(this.selectedCards[i]);
-    };
+    this.moveToMatched();
     this.selectedCards = [];
     this.matches++;
   }
@@ -31,6 +36,8 @@ class Deck {
   }
 
   moveToMatched() {
-
+    for(var i = 0;i < this.selectedCards.length; i++) {
+    this.matchedCards.push(this.selectedCards[i]);
+    };
   }
 }
