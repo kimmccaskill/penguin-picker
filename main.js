@@ -1,4 +1,3 @@
-// var cards = document.querySelectorAll('.memory-card');
 var congratsMsg = document.querySelector("#congrats-msg")
 var congratsPg = document.querySelector('#congrats-page')
 var form = document.querySelector(".form-container");
@@ -27,7 +26,7 @@ function createCard() {
   instantiateCard();
   for(var i = 0; i < deck.cards.length; i++) {
   cardContainer.innerHTML += `
-  <div class="memory-card card${num++}" data-breed="${deck.cards[i].matchInfo}" data-id=${i}>
+  <div class="memory-card card${num++}" data-breed="${deck.cards[i].matchInfo}" data-id=${deck.cards[i].id}>
     <img class="front-face" src="./assets/${deck.cards[i].matchInfo}-peng.jpg" alt="${deck.cards[i].matchInfo} Penguin">
     <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
   </div>`;
@@ -116,9 +115,8 @@ function removeMatchCards() {
   setTimeout(() => {
     firstCard.classList.add("card-match");
     secondCard.classList.add("card-match");
-    matchCount.innerHTML = deck.matches;
-    endGameCheck()
     deck.checkSelectedCards()
+    endGameCheck()
 }, 1200);
 }
 
