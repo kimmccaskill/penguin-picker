@@ -11,6 +11,10 @@ var plyrOneInput = document.querySelector("#plyr-1-input");
 var plyrOneName = document.querySelector(".plyr-one-name");
 var plyrTwoInput = document.querySelector("#plyr-2-input");
 var plyrTwoName = document.querySelector(".plyr-two-name");
+var timeResults = document.getElementById("time-results");
+var seconds = 0;
+var minutes = 0;
+var interval;
 var deck = new Deck();
 
 window.addEventListener('load', playDisableToggle);
@@ -40,7 +44,7 @@ function instantiateCard() {
     var card = new Card(data[i], i);
     deck.cards.push(card);
     }
-  deck.shuffle(deck.cards);
+  // deck.shuffle(deck.cards);
 }
 
 function insertGreeting() {
@@ -81,9 +85,10 @@ function playDisableToggle() {
   }
 }
 function flipCardUp(event) {
+  timer();
   var clickedId = parseInt(event.target.parentNode.dataset.id);
   if (deck.selectedCards.length === 2) return;
-  if (this === firstCard) return;
+  if (this.classList.contains('flip')) return;
   this.classList.add('flip');
   if(!deck.selectedCards[0]) {
   firstCard = this;
@@ -95,10 +100,26 @@ function flipCardUp(event) {
   checkForMatch();
 }
 
+function timer() {
+  var firstMove = 0;
+  firstMove++;
+  if(firstMove === 1) {
+    clearInterval(interval);
+    interval = setInterval(startTimer, 1000);
+  }
+  console.log('timer')
+}
+
+function startTimer() {
+  seconds++;
+  timeResults.innerHTML = `It took you ${seconds} seconds!`;
+}
+
 function unflipCards() {
   setTimeout(() => {
   firstCard.classList.remove('flip');
   secondCard.classList.remove('flip');
+  deck.checkSelectedCards()
 }, 1500);
 }
 
@@ -108,7 +129,6 @@ function checkForMatch() {
     return;
   }
   unflipCards();
-  deck.checkSelectedCards()
 }
 
 function removeMatchCards() {
@@ -123,6 +143,7 @@ function removeMatchCards() {
 function endGameCheck() {
   if (deck.matches === 5) {
     console.log("end game")
+    clearInterval(interval);
     gameBoard.style.display = "none";
     congratsPg.style.display = "initial";
     congratsMsg.innerText = `CONGRATULATIONS! ${plyrOneInput.value} WINS!!!`;
