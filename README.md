@@ -24,9 +24,9 @@
  ![image](https://frontend.turing.io/projects/module-1/assets/which-beyonce/directions.png)
  ![image](https://frontend.turing.io/projects/module-1/assets/which-beyonce/game.png)
  #### My Recreation:
- ![image]()
- ![image]()
- ![image]()
+ ![image](https://user-images.githubusercontent.com/54483332/68270094-76784f80-0019-11ea-86de-1b94442c2c46.png)
+ ![image](https://user-images.githubusercontent.com/54483332/68270113-8c861000-0019-11ea-98ba-bcf612255556.png)
+ ![image](https://user-images.githubusercontent.com/54483332/68270127-990a6880-0019-11ea-91cb-d6efc6118b4a.png)
 
 ### Technologies Used:
   * Atom
