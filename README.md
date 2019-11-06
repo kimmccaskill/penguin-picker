@@ -21,8 +21,12 @@
 ### The Comp Recreation:
  #### Original Comp:
  ![image](https://frontend.turing.io/projects/module-1/assets/which-beyonce/landing.png)
- #### Our Recreation:
-
+ ![image](https://frontend.turing.io/projects/module-1/assets/which-beyonce/directions.png)
+ ![image](https://frontend.turing.io/projects/module-1/assets/which-beyonce/game.png)
+ #### My Recreation:
+ ![image]()
+ ![image]()
+ ![image]()
 
 ### Technologies Used:
   * Atom
