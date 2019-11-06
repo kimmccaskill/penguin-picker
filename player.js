@@ -1,8 +1,8 @@
 class Player {
   constructor(user) {
-    this.id = user.id;
     this.name = user.name;
     this.time = user.time;
+    this.simpleTime = user.simpleTime;
   }
 
   saveToStorage(Player) {

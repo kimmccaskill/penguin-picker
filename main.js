@@ -5,6 +5,7 @@ var form = document.querySelector(".form-container");
 var gameBoard = document.querySelector("main");
 var dropBtn = document.querySelector(".hamburger-icon")
 var dropDown = document.querySelector(".dropdown")
+var leaderboard = document.querySelector('.leaderboard')
 var cardContainer = document.querySelector(".card-container")
 var greeting = document.querySelector("article");
 var matchCount = document.querySelector('.matches')
@@ -24,6 +25,7 @@ var firstCard, secondCard;
 
 window.addEventListener('load', playDisableToggle);
 window.addEventListener('load', createCard);
+window.addEventListener('load', loadDrop);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
@@ -31,9 +33,9 @@ dropBtn.addEventListener('click', openDrop);
 
 function addPlyr() {
   var user = new Player({
-    id: Date.now(),
     name: plyrOneInput.value,
     time: `${minutes} min and ${seconds} sec`,
+    simpleTime: seconds
   });
   userArray.push(user);
   user.saveToStorage(userArray);
@@ -59,12 +61,34 @@ function instantiateCard() {
     var card = new Card(data[i], i);
     deck.cards.push(card);
     }
-  deck.shuffle(deck.cards);
+  // deck.shuffle(deck.cards);
 }
 
 function openDrop() {
   dropDown.classList.toggle('drop')
 }
+
+function loadDrop() {
+  userArray.sort(compare);
+  if(userArray.length > 0) {
+    for(var i = 0;i < 5; i++) {
+      leaderboard.innerHTML +=`
+      <p class="user-stats">${userArray[i].name} - ${userArray[i].time}</p>`
+    }
+  }
+}
+
+function compare( a, b ) {
+  if ( a.simpleTime < b.simpleTime ){
+    return -1;
+  }
+  if ( a.simpleTime > b.simpleTime ){
+    return 1;
+  }
+  return 0;
+}
+
+userArray.sort(compare);
 
 function insertGreeting() {
   playerGreeting.innerText = `WELCOME ${plyrOneInput.value.toUpperCase()} AND ${plyrTwoInput.value.toUpperCase()}!`;
