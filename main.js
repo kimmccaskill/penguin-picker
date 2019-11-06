@@ -16,6 +16,7 @@ var seconds = 0;
 var minutes = 0;
 var interval;
 var deck = new Deck();
+var userArray = [];
 
 window.addEventListener('load', playDisableToggle);
 window.addEventListener('load', createCard);
@@ -23,6 +24,23 @@ plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
 var firstCard, secondCard;
+
+
+
+var user = {
+
+}
+
+
+// function saveToStorage() {
+//   localStorage.setItem("userArray", JSON.stringify(user))
+// }
+
+function saveToStorage() {
+  var userString = JSON.stringify(user);
+
+  localStorage.setItem("userArray", userString);
+}
 
 function createCard() {
   var card = new Card();
@@ -44,7 +62,7 @@ function instantiateCard() {
     var card = new Card(data[i], i);
     deck.cards.push(card);
     }
-  // deck.shuffle(deck.cards);
+  deck.shuffle(deck.cards);
 }
 
 function insertGreeting() {
@@ -68,6 +86,8 @@ function startGame() {
     loadGame()
     plyrOneName.innerText = plyrOneInput.value;
     plyrTwoName.innerText = plyrTwoInput.value;
+    user['name'] = plyrOneInput.value;
+    saveToStorage();
   } else {
     loadGreeting();
   }
