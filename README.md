@@ -20,7 +20,7 @@
 
 ### The Comp Recreation:
  #### Original Comp:
- !(https://frontend.turing.io/projects/module-1/assets/which-beyonce/landing.png)
+ ![image](https://frontend.turing.io/projects/module-1/assets/which-beyonce/landing.png)
  #### Our Recreation:
 
 
