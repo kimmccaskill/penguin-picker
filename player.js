@@ -7,6 +7,6 @@ class Player {
 
   saveToStorage(Player) {
     var userString = JSON.stringify(Player);
-    localStorage.setItem("userArray", userString);
+    localStorage.setItem('userArray', userString);
   }
 }

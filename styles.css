@@ -150,8 +150,6 @@ main {
 .card-container {
   grid-area: mid;
   display: grid;
-  /* flex-wrap: wrap; */
-  /* justify-content: space-evenly; */
   perspective: 1000px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;

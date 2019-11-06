@@ -1,27 +1,26 @@
-var congratsMsg = document.querySelector("#congrats-msg")
+var cardContainer = document.querySelector('.card-container')
+var congratsMsg = document.querySelector('#congrats-msg')
 var congratsPg = document.querySelector('#congrats-page')
-var form = document.querySelector(".form-container");
-// var body = document.querySelector("body");
-var gameBoard = document.querySelector("main");
-var dropBtn = document.querySelector(".hamburger-icon")
-var dropDown = document.querySelector(".dropdown")
+var dropBtn = document.querySelector('.hamburger-icon')
+var dropDown = document.querySelector('.dropdown')
+var form = document.querySelector('.form-container');
+var gameBoard = document.querySelector('main');
+var greeting = document.querySelector('article');
 var leaderboard = document.querySelector('.leaderboard')
-var cardContainer = document.querySelector(".card-container")
-var greeting = document.querySelector("article");
 var matchCount = document.querySelector('.matches')
-var playBtn = document.querySelector("#play-game-btn");
-var playerGreeting = document.querySelector(".plyr-greeting");
-var plyrOneInput = document.querySelector("#plyr-1-input");
-var plyrOneName = document.querySelector(".plyr-one-name");
-var plyrTwoInput = document.querySelector("#plyr-2-input");
-var plyrTwoName = document.querySelector(".plyr-two-name");
-var timeResults = document.getElementById("time-results");
-var userArray = JSON.parse(localStorage.getItem("userArray")) || [];
-var seconds = 0;
-var minutes = 0;
-var interval;
+var playBtn = document.querySelector('#play-game-btn');
+var playerGreeting = document.querySelector('.plyr-greeting');
+var plyrOneInput = document.querySelector('#plyr-1-input');
+var plyrOneName = document.querySelector('.plyr-one-name');
+var plyrTwoInput = document.querySelector('#plyr-2-input');
+var plyrTwoName = document.querySelector('.plyr-two-name');
+var timeResults = document.getElementById('time-results');
+var userArray = JSON.parse(localStorage.getItem('userArray')) || [];
 var deck = new Deck();
 var firstCard, secondCard;
+var interval;
+var minutes = 0;
+var seconds = 0;
 
 window.addEventListener('load', playDisableToggle);
 window.addEventListener('load', createCard);
@@ -47,9 +46,9 @@ function createCard() {
   instantiateCard();
   for(var i = 0; i < deck.cards.length; i++) {
   cardContainer.innerHTML += `
-  <div class="memory-card card${num++}" data-breed="${deck.cards[i].matchInfo}" data-id=${deck.cards[i].id}>
-    <img class="front-face" src="./assets/${deck.cards[i].matchInfo}-peng.jpg" alt="${deck.cards[i].matchInfo} Penguin">
-    <img class="back-face" src="./assets/peng-icon.svg" alt="Memory Card">
+  <div class='memory-card card${num++}' data-breed='${deck.cards[i].matchInfo}' data-id=${deck.cards[i].id}>
+    <img class='front-face' src='./assets/${deck.cards[i].matchInfo}-peng.jpg' alt='${deck.cards[i].matchInfo} Penguin'>
+    <img class='back-face' src='./assets/peng-icon.svg' alt='Memory Card'>
   </div>`;
   document.querySelectorAll('.memory-card').forEach(card => card.addEventListener('click', flipCardUp));
   };
@@ -73,12 +72,12 @@ function loadDrop() {
   if(userArray.length > 0) {
     for(var i = 0;i < 5; i++) {
       leaderboard.innerHTML +=`
-      <p class="user-stats">${userArray[i].name.toUpperCase()} - ${userArray[i].time}</p>`
+      <p class='user-stats'>${userArray[i].name.toUpperCase()} - ${userArray[i].time}</p>`
     }
   }
 }
 
-function compare( a, b ) {
+function compare(a, b) {
   if ( a.simpleTime < b.simpleTime ){
     return -1;
   }
@@ -95,24 +94,22 @@ function insertGreeting() {
 }
 
 function loadGreeting() {
-  greeting.style.display = "flex";
-  form.style.display = "none";
+  greeting.style.display = 'flex';
+  form.style.display = 'none';
   insertGreeting();
 }
 
 function loadGame() {
-  greeting.style.display = "none";
-  gameBoard.style.display = "grid";
-  playBtn.style.display = "none";
+  greeting.style.display = 'none';
+  gameBoard.style.display = 'grid';
+  playBtn.style.display = 'none';
 }
 
 function startGame() {
-  if(greeting.style.display === "flex") {
+  if(greeting.style.display === 'flex') {
     loadGame()
     plyrOneName.innerText = plyrOneInput.value;
     plyrTwoName.innerText = plyrTwoInput.value;
-    // user['name'] = plyrOneInput.value;
-    // addPlyr()
   } else {
     loadGreeting();
   }
@@ -129,6 +126,7 @@ function playDisableToggle() {
     playBtn.style.cursor = 'not-allowed';
   }
 }
+
 function flipCardUp(event) {
   timer();
   var clickedId = parseInt(event.target.parentNode.dataset.id);
@@ -167,11 +165,9 @@ function startTimer() {
 function timeResult() {
   if(minutes === 0) {
   timeResults.innerHTML = `It took you ${seconds} seconds!`;
-  } else{
+  } else {
   timeResults.innerHTML = `It took you ${minutes} minute and ${seconds} seconds!`;
   }
-  // user.time = `${minutes} min and ${seconds} sec`;
-  // user[time] = `${minutes} min and ${seconds} sec`;
 }
 
 function unflipCards() {
@@ -198,8 +194,8 @@ function updateMatches() {
 
 function removeMatchCards() {
   setTimeout(() => {
-    firstCard.classList.add("card-match");
-    secondCard.classList.add("card-match");
+    firstCard.classList.add('card-match');
+    secondCard.classList.add('card-match');
     deck.checkSelectedCards();
     updateMatches();
     endGameCheck();
@@ -208,11 +204,11 @@ function removeMatchCards() {
 
 function endGameCheck() {
   if (deck.matches === 5) {
-    console.log("end game")
+    console.log('end game')
     clearInterval(interval);
     addPlyr();
-    gameBoard.style.display = "none";
-    congratsPg.style.display = "initial";
+    gameBoard.style.display = 'none';
+    congratsPg.style.display = 'initial';
     congratsMsg.innerText = `CONGRATULATIONS! ${plyrOneInput.value} WINS!!!`;
   }
 };
