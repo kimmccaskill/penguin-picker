@@ -61,7 +61,7 @@ function instantiateCard() {
     var card = new Card(data[i], i);
     deck.cards.push(card);
     }
-  // deck.shuffle(deck.cards);
+  deck.shuffle(deck.cards);
 }
 
 function openDrop() {
