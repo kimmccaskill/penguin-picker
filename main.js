@@ -12,17 +12,29 @@ var plyrOneName = document.querySelector(".plyr-one-name");
 var plyrTwoInput = document.querySelector("#plyr-2-input");
 var plyrTwoName = document.querySelector(".plyr-two-name");
 var timeResults = document.getElementById("time-results");
+var userArray = JSON.parse(localStorage.getItem("userArray")) || [];
 var seconds = 0;
 var minutes = 0;
 var interval;
 var deck = new Deck();
+// var userArray = [];
+var firstCard, secondCard;
 
 window.addEventListener('load', playDisableToggle);
 window.addEventListener('load', createCard);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
-var firstCard, secondCard;
+
+function addPlyr() {
+  var user = new Player({
+    id: Date.now(),
+    name: plyrOneInput.value,
+    time: `${minutes} min and ${seconds} sec`,
+  });
+  userArray.push(user);
+  user.saveToStorage(userArray);
+}
 
 function createCard() {
   var card = new Card();
@@ -68,6 +80,8 @@ function startGame() {
     loadGame()
     plyrOneName.innerText = plyrOneInput.value;
     plyrTwoName.innerText = plyrTwoInput.value;
+    // user['name'] = plyrOneInput.value;
+    // addPlyr()
   } else {
     loadGreeting();
   }
@@ -125,6 +139,8 @@ function timeResult() {
   } else{
   timeResults.innerHTML = `It took you ${minutes} minute and ${seconds} seconds!`;
   }
+  // user.time = `${minutes} min and ${seconds} sec`;
+  // user[time] = `${minutes} min and ${seconds} sec`;
 }
 
 function unflipCards() {
@@ -163,6 +179,7 @@ function endGameCheck() {
   if (deck.matches === 5) {
     console.log("end game")
     clearInterval(interval);
+    addPlyr();
     gameBoard.style.display = "none";
     congratsPg.style.display = "initial";
     congratsMsg.innerText = `CONGRATULATIONS! ${plyrOneInput.value} WINS!!!`;
