@@ -174,7 +174,7 @@ main {
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   transform: scale(1);
   transform-style: preserve-3d;
-  transition: transform .5s;
+  transition: transform .3s;
   cursor: pointer;
 }
 
@@ -186,7 +186,7 @@ img {
 
 .memory-card:active {
    transform: scale(0.97);
-   transition: transform .2s;
+   transition: transform .1s;
  }
 
 .memory-card.flip {

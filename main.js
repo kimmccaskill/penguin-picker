@@ -73,7 +73,7 @@ function loadDrop() {
   if(userArray.length > 0) {
     for(var i = 0;i < 5; i++) {
       leaderboard.innerHTML +=`
-      <p class="user-stats">${userArray[i].name} - ${userArray[i].time}</p>`
+      <p class="user-stats">${userArray[i].name.toUpperCase()} - ${userArray[i].time}</p>`
     }
   }
 }
