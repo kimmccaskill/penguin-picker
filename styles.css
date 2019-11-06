@@ -60,6 +60,11 @@ h1 {
   display: initial;
 }
 
+#drop-title {
+  text-align: center;
+  margin-top: 20px;
+}
+
 .form-container {
   display: flex;
   justify-content: center;

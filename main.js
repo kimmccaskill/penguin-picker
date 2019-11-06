@@ -1,6 +1,7 @@
 var congratsMsg = document.querySelector("#congrats-msg")
 var congratsPg = document.querySelector('#congrats-page')
 var form = document.querySelector(".form-container");
+// var body = document.querySelector("body");
 var gameBoard = document.querySelector("main");
 var dropBtn = document.querySelector(".hamburger-icon")
 var dropDown = document.querySelector(".dropdown")
