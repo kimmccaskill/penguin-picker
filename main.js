@@ -2,6 +2,7 @@ var congratsMsg = document.querySelector("#congrats-msg")
 var congratsPg = document.querySelector('#congrats-page')
 var form = document.querySelector(".form-container");
 var gameBoard = document.querySelector("main");
+var dropBtn = document.querySelector(".hamburger-icon")
 var dropDown = document.querySelector(".dropdown")
 var cardContainer = document.querySelector(".card-container")
 var greeting = document.querySelector("article");
@@ -18,7 +19,6 @@ var seconds = 0;
 var minutes = 0;
 var interval;
 var deck = new Deck();
-// var userArray = [];
 var firstCard, secondCard;
 
 window.addEventListener('load', playDisableToggle);
@@ -26,7 +26,7 @@ window.addEventListener('load', createCard);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
-dropDown.addEventListener('click', openDrop);
+dropBtn.addEventListener('click', openDrop);
 
 function addPlyr() {
   var user = new Player({
@@ -58,11 +58,11 @@ function instantiateCard() {
     var card = new Card(data[i], i);
     deck.cards.push(card);
     }
-  // deck.shuffle(deck.cards);
+  deck.shuffle(deck.cards);
 }
 
 function openDrop() {
-  
+  dropDown.classList.toggle('drop')
 }
 
 function insertGreeting() {
