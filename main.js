@@ -2,6 +2,7 @@ var congratsMsg = document.querySelector("#congrats-msg")
 var congratsPg = document.querySelector('#congrats-page')
 var form = document.querySelector(".form-container");
 var gameBoard = document.querySelector("main");
+var dropDown = document.querySelector(".dropdown")
 var cardContainer = document.querySelector(".card-container")
 var greeting = document.querySelector("article");
 var matchCount = document.querySelector('.matches')
@@ -25,6 +26,7 @@ window.addEventListener('load', createCard);
 plyrOneInput.addEventListener('keyup', playDisableToggle);
 plyrTwoInput.addEventListener('keyup', playDisableToggle);
 playBtn.addEventListener('click', startGame);
+dropDown.addEventListener('click', openDrop);
 
 function addPlyr() {
   var user = new Player({
@@ -57,6 +59,10 @@ function instantiateCard() {
     deck.cards.push(card);
     }
   // deck.shuffle(deck.cards);
+}
+
+function openDrop() {
+  
 }
 
 function insertGreeting() {
