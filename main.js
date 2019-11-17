@@ -144,7 +144,7 @@ function flipCardUp(event) {
 }
 
 function timer() {
-  var firstMove = 0;
+  let firstMove = 0;
   firstMove++;
   if(firstMove === 1) {
     clearInterval(interval);
