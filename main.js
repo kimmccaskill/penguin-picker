@@ -44,7 +44,7 @@ function createCard() {
   var card = new Card();
   let num = 1;
   instantiateCard();
-  for(var i = 0; i < deck.cards.length; i++) {
+  for(let i = 0; i < deck.cards.length; i++) {
   cardContainer.innerHTML += `
   <div class='memory-card card${num++}' data-breed='${deck.cards[i].matchInfo}' data-id=${deck.cards[i].id}>
     <img class='front-face' src='./assets/${deck.cards[i].matchInfo}-peng.jpg' alt='${deck.cards[i].matchInfo} Penguin'>
@@ -70,7 +70,7 @@ function openDrop() {
 function loadDrop() {
   userArray.sort(compare);
   if(userArray.length > 0) {
-    for(var i = 0;i < 5; i++) {
+    for(let i = 0;i < 5; i++) {
       leaderboard.innerHTML +=`
       <p class='user-stats'>${userArray[i].name.toUpperCase()} - ${userArray[i].time}</p>`
     }
@@ -129,7 +129,7 @@ function playDisableToggle() {
 
 function flipCardUp(event) {
   timer();
-  var clickedId = parseInt(event.target.parentNode.dataset.id);
+  let clickedId = parseInt(event.target.parentNode.dataset.id);
   if (deck.selectedCards.length === 2) return;
   if (this.classList.contains('flip')) return;
   this.classList.add('flip');
