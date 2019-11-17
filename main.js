@@ -42,7 +42,7 @@ function addPlyr() {
 
 function createCard() {
   var card = new Card();
-  var num = 1;
+  let num = 1;
   instantiateCard();
   for(var i = 0; i < deck.cards.length; i++) {
   cardContainer.innerHTML += `
