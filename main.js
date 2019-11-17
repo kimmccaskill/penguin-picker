@@ -55,11 +55,11 @@ function createCard() {
 }
 
 function instantiateCard() {
-  var data = ['afric', 'afric', 'chin', 'chin', 'emp', 'emp', 'little', 'little', 'mac', 'mac'];
-  for (var i =0; i < data.length; i++) {
+  let data = ['afric', 'afric', 'chin', 'chin', 'emp', 'emp', 'little', 'little', 'mac', 'mac'];
+  for (let i = 0; i < data.length; i++) {
     var card = new Card(data[i], i);
     deck.cards.push(card);
-    }
+  };
   deck.shuffle(deck.cards);
 }
 
