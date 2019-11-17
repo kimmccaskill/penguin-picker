@@ -1,26 +1,26 @@
-var cardContainer = document.querySelector('.card-container')
-var congratsMsg = document.querySelector('#congrats-msg')
-var congratsPg = document.querySelector('#congrats-page')
-var dropBtn = document.querySelector('.hamburger-icon')
-var dropDown = document.querySelector('.dropdown')
-var form = document.querySelector('.form-container');
-var gameBoard = document.querySelector('main');
-var greeting = document.querySelector('article');
-var leaderboard = document.querySelector('.leaderboard')
-var matchCount = document.querySelector('.matches')
-var playBtn = document.querySelector('#play-game-btn');
-var playerGreeting = document.querySelector('.plyr-greeting');
-var plyrOneInput = document.querySelector('#plyr-1-input');
-var plyrOneName = document.querySelector('.plyr-one-name');
-var plyrTwoInput = document.querySelector('#plyr-2-input');
-var plyrTwoName = document.querySelector('.plyr-two-name');
-var timeResults = document.getElementById('time-results');
-var userArray = JSON.parse(localStorage.getItem('userArray')) || [];
+const cardContainer = document.querySelector('.card-container')
+const congratsMsg = document.querySelector('#congrats-msg')
+const congratsPg = document.querySelector('#congrats-page')
+const dropBtn = document.querySelector('.hamburger-icon')
+const dropDown = document.querySelector('.dropdown')
+const form = document.querySelector('.form-container');
+const gameBoard = document.querySelector('main');
+const greeting = document.querySelector('article');
+const leaderboard = document.querySelector('.leaderboard')
+const matchCount = document.querySelector('.matches')
+const playBtn = document.querySelector('#play-game-btn');
+const playerGreeting = document.querySelector('.plyr-greeting');
+const plyrOneInput = document.querySelector('#plyr-1-input');
+const plyrOneName = document.querySelector('.plyr-one-name');
+const plyrTwoInput = document.querySelector('#plyr-2-input');
+const plyrTwoName = document.querySelector('.plyr-two-name');
+const timeResults = document.getElementById('time-results');
+let userArray = JSON.parse(localStorage.getItem('userArray')) || [];
 var deck = new Deck();
-var firstCard, secondCard;
-var interval;
-var minutes = 0;
-var seconds = 0;
+let firstCard, secondCard;
+let interval;
+let minutes = 0;
+let seconds = 0;
 
 window.addEventListener('load', playDisableToggle);
 window.addEventListener('load', createCard);
